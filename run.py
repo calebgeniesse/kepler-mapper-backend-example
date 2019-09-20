@@ -8,9 +8,8 @@
 import castillo
 
 # Load a single subject
-subject = castillo.load_subject(subject=7)
-data, labels = subject.X, subject.target
-print(labels)
+subject = castillo.load_subject(subject=7, batch_size=250)
+data, labels = subject.X.to_numpy(), subject.target
 
 
 ### [2] Setup MapperInteractive app
