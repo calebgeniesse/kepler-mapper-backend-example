@@ -3,19 +3,13 @@
 # or 
 # >>> python run.py
 
+from sklearn import datasets
 
-### [1] Setup data
-import castillo
-
-# Load a single subject
-subject = castillo.load_subject(subject=7)
-data, labels = subject.X, subject.target
-print(labels)
-
-
-### [2] Setup MapperInteractive app
 from mappercore import Server
 from mappercore.conf import KeplerMapperConfig
+
+# Load example data
+data, labels = datasets.make_circles(n_samples=5000, noise=0.03, factor=0.3)
 
 # Create kepler mapper config
 conf = KeplerMapperConfig(data=data, config="config.json")
