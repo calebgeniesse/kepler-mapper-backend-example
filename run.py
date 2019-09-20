@@ -9,7 +9,9 @@ from mappercore import Server
 from mappercore.conf import KeplerMapperConfig
 
 # Load example data
-data, labels = datasets.make_circles(n_samples=5000, noise=0.03, factor=0.3)
+import castillo
+subject = castillo.load_subject(subject=7)
+data, labels = subject.X, subject.labels
 
 # Create kepler mapper config
 conf = KeplerMapperConfig(data=data, config="config.json")
