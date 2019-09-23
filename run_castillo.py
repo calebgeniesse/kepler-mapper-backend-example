@@ -2,13 +2,21 @@
 # >>> gunicorn run:server
 # or 
 # >>> python run.py
-
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
 
 ### [1] Setup data
-from sklearn import datasets
+import castillo
 
-# Load example data
-data, labels = datasets.make_circles(n_samples=5000, noise=0.03, factor=0.3)
+# Load a single subject
+subject = castillo.load_subject(subject=14, batch_size=None)
+data, labels = subject.X.to_numpy(), subject.target
+
+# extract sample of featurs
+#zscores = stats.zscore(data, axis=0)
+#features = np.where(np.mean(np.abs(zscores) > 6, axis=0))
+print(data.shape)
 
 
 ### [2] Setup MapperInteractive app
